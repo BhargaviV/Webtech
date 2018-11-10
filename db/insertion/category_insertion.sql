@@ -1,5 +1,6 @@
 
 INSERT INTO category VALUES
+    (0,'Anonymous'),
     (1,'Biographies & Memoirs'),
     (2,'Business & Money'),
     (3,'Calendars'),
