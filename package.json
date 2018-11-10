@@ -1,0 +1,22 @@
+{
+  "name": "webtech",
+  "version": "1.0.0",
+  "description": "\"# Webtech\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gunashree-R-V/Webtech.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gunashree-R-V/Webtech/issues"
+  },
+  "homepage": "https://github.com/Gunashree-R-V/Webtech#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
