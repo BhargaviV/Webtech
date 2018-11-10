@@ -4936,4 +4936,5 @@ INSERT INTO Author VALUES
     ('Jack Turner',4924),
     ('G. Roebuck',4925),
     ('Ken Lamberton',4926),
-    ('The Committee on Scholarly Communication with the People''s Republic',4927);
+    ('The Committee on Scholarly Communication with the People''s Republic',4927),
+    ('Anonymous',0);
