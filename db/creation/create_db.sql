@@ -4,7 +4,7 @@ CREATE TABLE Book (
 	book_id INT NOT NULL ,
 	book_name VARCHAR(255) CHARACTER SET utf8 NOT NULL UNIQUE,
 	book_description VARCHAR(255) CHARACTER SET utf8 ,
-	book_image_url VARCHAR(255) CHARACTER SET utf8 NOT NULL UNIQUE,
+	book_image_url VARCHAR(255) CHARACTER SET utf8 NOT NULL,
 	author_id INT NOT NULL,
 	category_id INT NOT NULL,
 	book_price FLOAT NOT NULL,

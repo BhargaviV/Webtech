@@ -1,5 +1,5 @@
+DELETE FROM Book;
 INSERT INTO Book VALUES
-    (1,'Construction Scheduling: Principles and Practices (2nd Edition,99.00)',NULL,'http://ecx.images-amazon.com/images/I/51PuTPPCxaL.jpg',1,0,99.00),
     (2,'The Handbook of Painted Decoration: The Tools, Materials, and Step-by-Step Techniques of Trompe L''Oeil Painting',NULL,'http://ecx.images-amazon.com/images/I/51BLmSCM6dL.jpg',2,0,99.00),
     (3,'Halo: The Poster Collection',NULL,'http://ecx.images-amazon.com/images/I/51O2-prLrML.jpg',0,0,99.00),
     (4,'The Life and Love of Dogs',NULL,'http://ecx.images-amazon.com/images/I/51c2TA1x6NL.jpg',3,0,99.00),
@@ -398,7 +398,7 @@ INSERT INTO Book VALUES
     (399,'Challenging Global Inequality: Development Theory and Practice in the 21st Century',NULL,'http://ecx.images-amazon.com/images/I/51MaURoRE2L.jpg',369,2,99.00),
     (400,'Understanding and Managing Diversity: Readings, Cases, and Exercises (6th Edition,99.00)',NULL,'http://ecx.images-amazon.com/images/I/51dX%2Bb9NoyL.jpg',370,2,99.00),
     (401,'Principles of Microeconomics',NULL,'http://ecx.images-amazon.com/images/I/511IaP4FCKL.jpg',371,2,99.00),
-    (402,'Technical Sourcebook for Designers',NULL,'http://ecx.images-amazon.com/images/I/31ZImfioh4L.jpg',49,2,99.00),
+    /*(402,'Technical Sourcebook for Designers',NULL,'http://ecx.images-amazon.com/images/I/31ZImfioh4L.jpg',49,2,99.00),*/
     (403,'Simple Wealth, Inevitable Wealth: How You and Your Financial Advisor Can Grow Your Fortune in Stock Mutual Funds',NULL,'http://ecx.images-amazon.com/images/I/51KuTnbRPIL.jpg',372,2,99.00),
     (404,'Social Marketing For Public Health: Global Trends And Success Stories',NULL,'http://ecx.images-amazon.com/images/I/51jDfnLaHOL.jpg',373,2,99.00),
     (405,'Keep Calm . . . It''s Just Real Estate: Your No-Stress Guide to Buying a Home',NULL,'http://ecx.images-amazon.com/images/I/514UqQKXA1L.jpg',374,2,99.00),
@@ -2458,7 +2458,7 @@ INSERT INTO Book VALUES
     (2456,'The War of 1812: The War That Both Sides Won',NULL,'http://ecx.images-amazon.com/images/I/517toR07PuL.jpg',2147,12,99.00),
     (2457,'Nelson''s Navy: The Ships, Men, and Organization, 1793-1815',NULL,'http://ecx.images-amazon.com/images/I/51WP2SVD1WL.jpg',2148,12,99.00),
     (2458,'Burial Patterns and Cultural Diversity in Late Bronze Age Canaan (Dissertation Series (American Schools of Oriental Research,99.00),99.00)',NULL,'http://ecx.images-amazon.com/images/I/51eLPKKJn4L.jpg',2149,12,99.00),
-    (2459,'The Greater Journey: Americans in Paris',NULL,'http://ecx.images-amazon.com/images/I/51JJHuTclXL.jpg',1802,12,99.00),
+    /*(2459,'The Greater Journey: Americans in Paris',NULL,'http://ecx.images-amazon.com/images/I/51JJHuTclXL.jpg',1802,12,99.00),*/
     (2460,'Etty Hillesum: An Interrupted Life the Diaries, 1941-1943 and Letters from Westerbork',NULL,'http://ecx.images-amazon.com/images/I/41rZENSFfiL.jpg',2150,12,99.00),
     (2461,'The History of White People',NULL,'http://ecx.images-amazon.com/images/I/31Z%2BDk-W5UL.jpg',2151,12,99.00),
     (2462,'The Battle of Midway (Pivotal Moments in American History,99.00)',NULL,'http://ecx.images-amazon.com/images/I/516KndBfC-L.jpg',2152,12,99.00),
@@ -3347,7 +3347,7 @@ INSERT INTO Book VALUES
     (3341,'Scarpetta: Scarpetta (Book 16,99.00)',NULL,'http://ecx.images-amazon.com/images/I/51wsHzZuW-L.jpg',2920,17,99.00),
     (3342,'A Mysterious Something in the Light: The Life of Raymond Chandler',NULL,'http://ecx.images-amazon.com/images/I/519uQ3pn8qL.jpg',2921,17,99.00),
     (3343,'Fatal Trauma',NULL,'http://ecx.images-amazon.com/images/I/41ibHh6oF-L.jpg',2922,17,99.00),
-    (3344,'The Killing Kind',NULL,'http://ecx.images-amazon.com/images/I/41tMNDiHAsL.jpg',2923,17,99.00),
+    /*(3344,'The Killing Kind',NULL,'http://ecx.images-amazon.com/images/I/41tMNDiHAsL.jpg',2923,17,99.00),*/
     (3345,'Dead or Alive (A Jack Ryan Novel,99.00)',NULL,'http://ecx.images-amazon.com/images/I/51CwCW9ytIL.jpg',2924,17,99.00),
     (3346,'Behind the Shattered Glass: A Lady Emily Mystery (Lady Emily Mysteries,99.00)',NULL,'http://ecx.images-amazon.com/images/I/51hGr9O%2Bm%2BL.jpg',2925,17,99.00),
     (3347,'Blood Orange: A China Bayles Mystery',NULL,'http://ecx.images-amazon.com/images/I/51WnCoQMgAL.jpg',2926,17,99.00),
@@ -3560,7 +3560,7 @@ INSERT INTO Book VALUES
     (3553,'The Co-Parents'' Handbook: Raising Well-Adjusted, Resilient, and Resourceful Kids in a Two-Home Family from Little Ones to Young Adults',NULL,'http://ecx.images-amazon.com/images/I/51MKfwm%2BSFL.jpg',3105,18,99.00),
     (3554,'Trashy White Girls',NULL,'http://ecx.images-amazon.com/images/I/41f1ZnNoIQL.jpg',3106,18,99.00),
     (3555,'Dr. Spock''s The School Years: The Emotional and Social Development of Children',NULL,'http://ecx.images-amazon.com/images/I/51jdVn-HZaL.jpg',3107,18,99.00),
-    (3556,'The Magic of Thinking Big',NULL,'http://ecx.images-amazon.com/images/I/51xb85HS7QL.jpg',3108,18,99.00),
+    /*(3556,'The Magic of Thinking Big',NULL,'http://ecx.images-amazon.com/images/I/51xb85HS7QL.jpg',3108,18,99.00),*/
     (3557,'Raising Twins: Parenting Multiples from Pregnancy Through the School Years',NULL,'http://ecx.images-amazon.com/images/I/51h3yO8cl-L.jpg',3109,18,99.00),
     (3558,'How to Stop Your Relatives from Driving You Crazy: Strategies for Coping With',NULL,'http://ecx.images-amazon.com/images/I/51ap3egGmbL.jpg',3110,18,99.00),
     (3559,'Culinary Essentials, Student Edition',NULL,'http://ecx.images-amazon.com/images/I/51GXD3JS14L.jpg',3111,18,99.00),
@@ -3639,7 +3639,7 @@ INSERT INTO Book VALUES
     (3632,'The Spirit of Mediaeval Philosophy',NULL,'http://ecx.images-amazon.com/images/I/41iZTQ220KL.jpg',3181,19,99.00),
     (3633,'The Incoherence of the Philosophers, 2nd Edition (Brigham Young University - Islamic Translation Series,99.00)',NULL,'http://ecx.images-amazon.com/images/I/51R7SBsuPHL.jpg',3182,19,99.00),
     (3634,'Humanities Data in R: Exploring Networks, Geospatial Data, Images, and Text (Quantitative Methods in the Humanities and Social Sciences,99.00)',NULL,'http://ecx.images-amazon.com/images/I/41cYTBR-obL.jpg',3183,19,99.00),
-    (3635,'America and the Pill: A History of Promise, Peril, and Liberation',NULL,'http://ecx.images-amazon.com/images/I/517tfBtUjwL.jpg',3184,19,99.00),
+    /*(3635,'America and the Pill: A History of Promise, Peril, and Liberation',NULL,'http://ecx.images-amazon.com/images/I/517tfBtUjwL.jpg',3184,19,99.00),*/
     (3636,'Avanti Popolo: Italian-American Writers Sail Beyond Columbus',NULL,'http://ecx.images-amazon.com/images/I/51uYwe7WGoL.jpg',0,19,99.00),
     (3637,'Elbow Room: The Varieties of Free Will Worth Wanting',NULL,'http://ecx.images-amazon.com/images/I/31apvG651rL.jpg',3185,19,99.00),
     (3638,'The Power of Babel: A Natural History of Language',NULL,'http://ecx.images-amazon.com/images/I/51qOwnlec1L.jpg',3186,19,99.00),
@@ -4916,7 +4916,7 @@ INSERT INTO Book VALUES
     (4906,'Textbook of Palliative Care Communicaiton',NULL,'http://ecx.images-amazon.com/images/I/41Sf1lskU5L.jpg',0,25,99.00),
     (4907,'Dear Mom: A Keepsake of Blessings and Memories of Growing Up with You (Specialty Journal,99.00)',NULL,'http://ecx.images-amazon.com/images/I/51ZLUTdsYYL.jpg',4259,25,99.00),
     (4908,'A Year to Live: How to Live This Year as If It Were Your Last',NULL,'http://ecx.images-amazon.com/images/I/51QVGYZNVEL.jpg',4260,25,99.00),
-    (4909,'Days of Deepening Friendship: For the Woman Who Wants Authentic Life with God',NULL,'http://ecx.images-amazon.com/images/I/41OSvIF5b2L.jpg',4261,25,99.00);
+    (4909,'Days of Deepening Friendship: For the Woman Who Wants Authentic Life with God',NULL,'http://ecx.images-amazon.com/images/I/41OSvIF5b2L.jpg',4261,25,99.00),
 	(4910,'The Prime of Life: A History of Modern Adulthood',NULL,'http://ecx.images-amazon.com/images/I/51JjhrwbvBL.jpg',4262,25,99.00),
     (4911,'Boys, Girls & Body Science: A First Book About Facts of Life',NULL,'http://ecx.images-amazon.com/images/I/51VK35TQbqL.jpg',4263,25,99.00),
     (4912,'The Fringe Hours: Making Time for You',NULL,'http://ecx.images-amazon.com/images/I/41BMUhvJMDL.jpg',4264,25,99.00),
