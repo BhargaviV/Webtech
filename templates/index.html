@@ -140,12 +140,12 @@
 	</header>
 
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(images/heading-pages-02.jpg);">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('https://michelec.info/wp-content/uploads/2017/11/bookcase-library-bookshelves-clipart-book-pencil-and-in-color-bookstore-seamless-pattern-books-on-stock-vector-bookstore-library-bookshelves-clipart-seamless-pattern.jpg');">
 		<h2 class="l-text2 t-center">
-			Women
+			E Book Store
 		</h2>
 		<p class="m-text13 t-center">
-			New Arrivals Women Collection 2018
+			New Arrivals Books Collection 2018
 		</p>
 	</section>
 
@@ -167,30 +167,13 @@
 									All
 								</a>
 							</li>
-
+							<% categories.forEach(function(category){ %>
 							<li class="p-t-4">
 								<a href="#" class="s-text13">
-									Women
+									<%= category.category_name %>
 								</a>
 							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Men
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Kids
-								</a>
-							</li>
-
-							<li class="p-t-4">
-								<a href="#" class="s-text13">
-									Accesories
-								</a>
-							</li>
+							<% }) %>
 						</ul>
 
 						<!--  -->
