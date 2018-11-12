@@ -8,6 +8,10 @@ server.set('views', path.join(__dirname, 'templates'));
 server.set('PORT', 4001);
 server.use(express.static('src'));
 
+
+const category = require('./models/category');
+const book = require('./models/books');
+
 var mysql = require('mysql')
 
 var connection = mysql.createConnection({
@@ -17,8 +21,25 @@ var connection = mysql.createConnection({
   database : 'bookit'
 });
 
+
 //https://stackoverflow.com/questions/35694504/pagination-in-nodejs-with-mysql
 server.get('/', (req, res, next) => {
+
+    category.getAllCategories(function(err, categories) {
+        if (err)
+            res.send(err);
+        book.getAllBooks(function(err, books) {
+            if (err)
+                res.send(err);
+            book.getCountOfAllPages(function(err, count) {
+                if (err)
+                    res.send(err); 
+                res.render('index',{
+                    categories : categories,
+                    books: books,
+                    count: count[0]
+                })
+
     connection.connect(function(err) {
         if(err)
         {
@@ -40,13 +61,28 @@ server.get('/', (req, res, next) => {
                 categories : categories,
                 books: books
             })
+        });
+    });
+});
+
+server.get('/books/:id',  (req, res, next) => {
+    book.getBookByPage(req.params.id, function(err, books) {
+        if (err)
+            res.send(err);
+        res.render('books',{
+            books: books
         })
-    }) 
+    });
 });
 
 server.get('/product-detail', (req, res, next) => {
-    res.render('product-detail',{
-    })
+    book.getBookById(req.query.bookId, function(err, book) {
+        if (err)
+          res.send(err);
+        res.render('product-detail',{
+            books: book
+        })
+      });
 });
 
 server.get('/checkout', (req, res, next) => {

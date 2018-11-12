@@ -146,6 +146,9 @@
 						</span>
 					</div>
 
+
+					<div id='booksGrid'></div>
+
 					<!-- Product -->
 					<div class="row">
 						<% books.forEach(function(book){ %>
@@ -186,8 +189,10 @@
 
 					<!-- Pagination -->
 					<div class="pagination flex-m flex-w p-t-26">
-						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+						<% for(var page=0; page< count.totalCount; page++) { %>
+							<a href="#" class="item-pagination flex-c-m trans-0-4"><%= page+1 %></a>
+						<% } %>
+						<!-- <a href="#" class="item-pagination flex-c-m trans-0-4">2</a> -->
 					</div>
 				</div>
 			</div>
@@ -276,8 +281,12 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+	<script src="js/index.js"></script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
 	<script	src="js/angular_module.js"></script>
+
 
 </body>
 </html>
