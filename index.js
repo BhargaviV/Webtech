@@ -3,8 +3,8 @@ const server = express();
 const path = require('path');
 server.engine('.html', require('ejs').__express);
 
-server.set('views', path.join(__dirname, 'templates'));
 server.set('view engine', 'html');
+server.set('views', path.join(__dirname, 'templates'));
 server.set('PORT', 4001);
 server.use(express.static('src'));
 
@@ -36,6 +36,21 @@ server.get('/', (req, res, next) => {
             })
         })
     }) 
+});
+
+server.get('/product-detail', (req, res, next) => {
+    res.render('product-detail',{
+    })
+});
+
+server.get('/checkout', (req, res, next) => {
+    res.render('checkout',{
+    })
+});
+
+server.get('/cart', (req, res, next) => {
+    res.render('cart',{
+    })
 });
 
 server.listen(server.get('PORT'), () => {
