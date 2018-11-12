@@ -13,22 +13,28 @@ var mysql = require('mysql')
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'qmpzal',
+  password : '',
   database : 'bookit'
 });
 
+//https://stackoverflow.com/questions/35694504/pagination-in-nodejs-with-mysql
 server.get('/', (req, res, next) => {
     connection.connect(function(err) {
-        if (err) throw err
+        if(err)
+        {
+            
+            //console.log("Error connecting to db")
+            throw err;
+        }
         console.log('You are now connected...')
     })
-    connection.query('SELECT category_name FROM category;', function(err, categories) {
+    connection.query('SELECT category_name FROM category LIMIT 6;', function(err, categories) {
         if (err) {
-            throw err
+            throw err;
         }
-        connection.query('SELECT book_name,book_image_url,book_price FROM book;', function(err, books) {
+        connection.query('SELECT book_name,book_image_url,book_price FROM book LIMIT 30;', function(err, books) {
             if (err) {
-                throw err
+                throw err;
             }
             res.render('index',{
                 categories : categories,
