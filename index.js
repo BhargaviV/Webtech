@@ -18,16 +18,30 @@ server.get('/', (req, res, next) => {
         book.getAllBooks(function(err, books) {
             if (err)
                 res.send(err);
-            res.render('index',{
-                categories : categories,
-                books: books
+            book.getCountOfAllPages(function(err, count) {
+                if (err)
+                    res.send(err); 
+                res.render('index',{
+                    categories : categories,
+                    books: books,
+                    count: count[0]
+                })
             })
         });
     });
 });
 
+server.get('/books/:id',  (req, res, next) => {
+    book.getBookByPage(req.params.id, function(err, books) {
+        if (err)
+            res.send(err);
+        res.render('books',{
+            books: books
+        })
+    });
+});
+
 server.get('/product-detail', (req, res, next) => {
-    // console.log(req.query.bookId);
     book.getBookById(req.query.bookId, function(err, book) {
         if (err)
           res.send(err);
