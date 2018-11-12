@@ -8,39 +8,33 @@ server.set('views', path.join(__dirname, 'templates'));
 server.set('PORT', 4001);
 server.use(express.static('src'));
 
-var mysql = require('mysql')
-
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'qmpzal',
-  database : 'bookit'
-});
+const category = require('./models/category');
+const book = require('./models/books');
 
 server.get('/', (req, res, next) => {
-    connection.connect(function(err) {
-        if (err) throw err
-        console.log('You are now connected...')
-    })
-    connection.query('SELECT category_name FROM category;', function(err, categories) {
-        if (err) {
-            throw err
-        }
-        connection.query('SELECT book_name,book_image_url,book_price FROM book;', function(err, books) {
-            if (err) {
-                throw err
-            }
+    category.getAllCategories(function(err, categories) {
+        if (err)
+            res.send(err);
+        book.getAllBooks(function(err, books) {
+            if (err)
+                res.send(err);
             res.render('index',{
                 categories : categories,
                 books: books
             })
-        })
-    }) 
+        });
+    });
 });
 
 server.get('/product-detail', (req, res, next) => {
-    res.render('product-detail',{
-    })
+    // console.log(req.query.bookId);
+    book.getBookById(req.query.bookId, function(err, book) {
+        if (err)
+          res.send(err);
+        res.render('product-detail',{
+            books: book
+        })
+      });
 });
 
 server.get('/checkout', (req, res, next) => {
