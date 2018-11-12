@@ -22,16 +22,20 @@ server.get('/', (req, res, next) => {
         if (err) throw err
         console.log('You are now connected...')
     })
-    connection.query('SELECT category_name FROM category;', function(err, results) {
+    connection.query('SELECT category_name FROM category;', function(err, categories) {
         if (err) {
             throw err
         }
-        var categories = results;
-        res.render('index',{
-            categories : categories
+        connection.query('SELECT book_name,book_image_url,book_price FROM book;', function(err, books) {
+            if (err) {
+                throw err
+            }
+            res.render('index',{
+                categories : categories,
+                books: books
+            })
         })
     }) 
-    res.send().status(404);
 });
 
 server.listen(server.get('PORT'), () => {
