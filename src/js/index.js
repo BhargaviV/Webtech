@@ -12,6 +12,7 @@ $(document).ready(function(){
     
     $('.item-pagination').on('click', function(){
         pageId = $(this).html();
+        console.log(pageId);
         $(".item-pagination").removeClass("active-pagination");
         $(this).addClass("active-pagination");
         sendBookRequest(pageId);

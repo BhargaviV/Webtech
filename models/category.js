@@ -3,7 +3,7 @@ var sql = require('../common.js');
 var Category = function(){
 };
 
-Category.getAllCategories = function getAllCategories(result) {
+Category.getAllCategories = function (result) {
     sql.query("SELECT category_name FROM category;", function (err, res) {
             if(err) {
                 console.log("error: ", err);
