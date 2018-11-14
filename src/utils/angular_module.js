@@ -5,11 +5,14 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         $scope.categories=[];
         $scope.page_number=[];
         $scope.books = [];
+        $scope._pages=[];
+        //$scope.numberOfpages = 0;
+      
         $http.get("/getCategories").then(function(response)
         {
            $scope.categories = response['data']['categories'];
            $scope.page_number = response['data']['page_number'];
-        //    console.log($scope.categories);
+           $scope._pages.length = $scope.page_number[0]['totalCount'] ;
         },
         function(err)
         {
@@ -27,5 +30,8 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             });
         }
         this.getBooksByPage(1);
-        $http.get("/")
+        $http.get("/");
+
+
+        $scope.getpagenumber = Array;
 }])
