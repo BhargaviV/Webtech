@@ -35,6 +35,17 @@ server.get('/books/:id',  (req, res, next) => {
     });
 });
 
+
+/*server.get('/books/:category',  (req, res, next) => {
+    book.getBookByCategory(req.params.category, function(err, books) {
+        if (err) {
+            res.send(err);
+        }
+        res.send(books);
+    });
+});*/
+
+
 server.get('/product-detail', (req, res, next) => {
     book.getBookById(req.query.bookId, function(err, book) {
         if (err)

@@ -65,9 +65,9 @@
 							</li>
 							
 							<li class="p-t-4" ng-repeat="item in categories">
-								<a href="#" class="s-text13">
+								<button ng-click="getBookByCategory(item.category_name)" class="s-text13">
 									{{item.category_name}}
-								</a>
+								</button>
 							</li>
 							
 						</ul>
@@ -179,7 +179,7 @@
 					</div>
 
 					<!-- Pagination -->
-					<div class="pagination flex-m flex-w p-t-26"   >
+					<div class="pagination flex-m flex-w p-t-26">
 							<button class="item-pagination flex-c-m trans-0-4" ng-repeat="n in _pages track by $index" ng-click="getBooksByPage($index+1)">
 								{{ $index+1 }}</button>
 					</div>

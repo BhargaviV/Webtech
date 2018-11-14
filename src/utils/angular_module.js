@@ -18,6 +18,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         {
             console.log(err);
         });
+
         $scope.getBooksByPage = function(id) {
             $http.get("/books/"+id).then(function(response)
             {
@@ -30,8 +31,20 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             });
         }
         $scope.getBooksByPage(1);
+
+
         $http.get("/");
 
-
+        /*$scope.getBookByCategory = function(category) {
+            $http.get("/books/"+category).then(function(response)
+            {
+                $scope.books = response['data'];
+                console.log($scope.books);
+            },
+            function(err)
+            {
+                console.log(err);
+            });
+        }*/
         $scope.getpagenumber = Array;
 }])
