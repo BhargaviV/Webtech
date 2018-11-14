@@ -180,7 +180,7 @@
 
 					<!-- Pagination -->
 					<div class="pagination flex-m flex-w p-t-26"  >
-							<a href="#" class="item-pagination flex-c-m trans-0-4" ng-repeat="n in _pages track by $index">
+							<a href="#" class="item-pagination flex-c-m trans-0-4" ng-repeat="n in _pages track by $index" ng-click="getBooksByPage($index+1)">
 								{{ $index+1 }}</a>
 					</div>
 				</div>
