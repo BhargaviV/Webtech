@@ -18,7 +18,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         {
             console.log(err);
         });
-        this.getBooksByPage = function(id) {
+        $scope.getBooksByPage = function(id) {
             $http.get("/books/"+id).then(function(response)
             {
                 $scope.books = response['data'];
@@ -29,7 +29,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
                 console.log(err);
             });
         }
-        this.getBooksByPage(1);
+        $scope.getBooksByPage(1);
         $http.get("/");
 
 
