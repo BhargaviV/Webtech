@@ -52,7 +52,7 @@
 					<div class="header-icons">
 						<div class="header-wrapicon2" >
 							<img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-							<span class="header-icons-noti">0</span>
+							<span class="header-icons-noti">{{ cart_count }}</span>
 	
 							<!-- Header cart noti -->
 							<div class="header-cart header-dropdown">
@@ -152,17 +152,6 @@
 							
 						</ul>
 						<!--categories-->
-						
-						<!-- Cart -->
-						<h4 class="m-text14 p-b-32">
-							Your book cart
-						</h4>
-
-						<div class="filter-price p-t-22 p-b-50 bo3">
-							
-						</div>
-
-						
 					</div>
 				</div>
 
@@ -214,7 +203,7 @@
 
 										<div class="block2-btn-addcart w-size1 trans-0-4">
 											<!-- Button -->
-											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" ng-click="addtocart(book);">
+											<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" ng-disabled="book.isincart" ng-click="addtocart(book);">
 												Add to Cart
 											</button>
 										</div>
