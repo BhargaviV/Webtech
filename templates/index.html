@@ -68,14 +68,14 @@
 											</a>
 	
 											<span class="header-cart-item-info">
-												1 x {{ book.book_price }}
+												{{book.count}} x {{ book.book_price }}
 											</span>
 										</div>
 									</li>
 								</ul>
 	
 								<div class="header-cart-total">
-									Total: $75.00
+									Total: {{ carttotal }}
 								</div>
 	
 								<div class="header-cart-buttons">
@@ -84,7 +84,7 @@
 											<!--a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
 												View Cart
 											</a-->
-										 <button class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4" ng-click="send()">
+										 <button class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4" ng-click="send_to_cart()">
 											View Cart 
 										</button> 
 									</div>
@@ -222,9 +222,9 @@
 								</div>
 
 								<div class="block2-txt p-t-20">
-									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+									<button class="block2-name dis-block s-text3 p-b-5" ng-click="send_to_details(book)">
 										{{ book.book_name }} 
-									</a>
+									</button>
 
 									<span class="block2-price m-text6 p-r-5">
 										{{ book.book_price }}
@@ -330,7 +330,6 @@
 	<script src="js/index.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 	<script	src="utils/angular_module.js"></script>
 
 

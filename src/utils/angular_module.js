@@ -7,9 +7,12 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         $scope.page_number=[];
         $scope.books = [];
         $scope._pages=[];
-        $scope.cart = [];
+        $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
         $scope.getpagenumber = Array;
+        
+        getcarttotal() ;
       
+        console.log("In main",$scope.cart);
         $http.get("/getCategories").then(function(response)
         {
            $scope.categories = response['data']['categories'];
@@ -39,11 +42,11 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
 
         $scope.addtocart = function(book)
         {
-            console.log(book);
+            book.count = 1;
             $scope.cart.push(book);
-            var len  = $scope.cart.length;
-            $scope.cart[len-1].count = 1;
             console.log($scope.cart);
+            getcarttotal();
+            //$scope.carttotal = getcarttotal();
         }
         $scope.getBookByCategory = function(category) {
             $http.get("/category/"+category).then(function(response)
@@ -57,27 +60,64 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             });
         }
 
-        $scope.send = function()
+        $scope.send_to_cart = function()
         {
             localStorage.setItem('cart',JSON.stringify($scope.cart));
             location.href = "/cart.html";
+        }
+
+        $scope.send_to_details = function(book)
+        {
+            localStorage.setItem('book_detail',JSON.stringify(book));
+            location.href = "/product-detail.html";
+        }
+
+        function getcarttotal()
+        {
+            var total = 0;
+            angular.forEach($scope.cart, function(value,key)
+            {
+                total += value.count * value.book_price;
+            });
+            $scope.carttotal = total;
         }
     
 }]);
 
 // second controller for cart page
-app.controller("cartctrl",['$scope','$http',function($scope,$http)
+app.controller("cartctrl",['$scope',function($scope)
 {
-    $scope.cart =  JSON.parse(localStorage.getItem('cart'));
-
-    console.log($scope.cart);
+    $scope.cart =  JSON.parse(localStorage.getItem('cart')); 
     $scope.increasebooks = function(book)
     {
         book.count +=1;
+        console.log($scope.cart);
     }
     $scope.decreasebooks = function(book)
     {
         book.count -=1;
     }
-    console.log($scope.cart);
+    $scope.update = function()
+    {
+        //console.log($scope.cart);
+        localStorage.setItem('cart',JSON.stringify($scope.cart));
+    }
+}]);
+
+
+//controller for checkout page
+app.controller("detailctrl",['$scope',function($scope)
+{
+    $scope.book =  JSON.parse(localStorage.getItem('book_detail'));
+    console.log("jfh",$scope.book);
+
+    $scope.cart = localStorage.getItem('cart') || [];
+    $scope.addtocart = function(book,count)
+    {
+        book.count = count;
+        $scope.cart.push(book);
+        console.log($scope.cart);
+        localStorage.setItem('cart',JSON.stringify($scope.cart));
+    }
+    
 }]);
