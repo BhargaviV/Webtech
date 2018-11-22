@@ -7,7 +7,8 @@ import json
 df = pd.read_excel("E:/Engineering/7th_sem/WT2/Project/Webtech/db/books_data.xlsx")
 
 def item(id):
-    return df.loc[df['book_id'] == id]['book_name'].tolist()[0]
+    item = df.loc[df['book_id'] == id]
+    return item.to_dict(orient='records')[0]
 
 def get_cos_similarity(df):
     tf = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0, stop_words='english')
@@ -30,9 +31,10 @@ def recommend(id, num):
     recs = results[id][:num]
     recommendations = []
     for rec in recs:
-        #recommendations += str(item(rec[1]))
-        recommendations.append(item(rec[1]))
-    print(recommendations)
+        book = item(rec[1])
+        del book['book_description']
+        recommendations.append(book)
+    print(json.dumps(recommendations))
     sys.stdout.flush()
 
 recommend(int(sys.argv[1]),int(sys.argv[2]))

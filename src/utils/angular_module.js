@@ -112,10 +112,11 @@ app.controller("cartctrl",['$scope',function($scope)
 
 
 //controller for product detail page
-app.controller("detailctrl",['$scope',function($scope)
+app.controller("detailctrl",['$scope','$http',function($scope,$http)
 {
     $scope.book =  JSON.parse(localStorage.getItem('book_detail'));
     $scope.book.count = 1; 
+    $scope.recommendation =[];
     console.log("jfh",$scope.book);
 
     $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -126,4 +127,17 @@ app.controller("detailctrl",['$scope',function($scope)
         localStorage.setItem('cart',JSON.stringify($scope.cart));
     }
     
+    $http.get("/recommend/" + $scope.book.book_id).then(
+        function (response)
+        {
+            $scope.recommendation = response['data'];
+            console.log($scope.recommendation);
+        },
+        function (err)
+        {
+            //console.log(JSON.parse(err));
+        }
+        
+    );
+
 }]);

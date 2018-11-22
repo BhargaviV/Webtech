@@ -60,9 +60,9 @@ server.get('/product-detail', (req, res, next) => {
       });
 });
 
-server.get('/test',(req,res,next) =>
+server.get('/recommend/:id',(req,res,next) =>
 {
-    book_id = 20;
+    book_id = req.params.id;
     number = 4;
     const pythonProcess = spawn('python',["E:/Engineering/7th_sem/WT2/Project/Webtech/recommendation/get_similar_books.py", book_id, number]);
     pythonProcess.stdout.on('data', (data) => {
