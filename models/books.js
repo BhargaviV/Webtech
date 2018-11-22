@@ -68,10 +68,10 @@ Book.getCountOfAllPages = function getCountOfAllPages(result) {
 
 
 
-/*Book.getBookByCategory = function getBookByCategory(category, result) {
+Book.getBookByCategory = function getBookByCategory(category, result) {
     
     console.log(category);
-    sql.query("SELECT book_id,book_name,book_image_url,book_price FROM book natural join category category.category_name = "+ category +";", function (err, res) {
+    sql.query(`SELECT book_id,book_name,book_image_url,book_price FROM book natural join category where category_name='${category}';`, function (err, res) {
         if(err) {
             console.log("error: ", err);
             result(null, err);
@@ -81,5 +81,5 @@ Book.getCountOfAllPages = function getCountOfAllPages(result) {
         }
     }); 
     
-}*/
+}
 module.exports = Book;
