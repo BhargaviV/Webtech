@@ -45,6 +45,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             book.count = 1;
             $scope.cart.push(book);
             console.log($scope.cart);
+            localStorage.setItem('cart',JSON.stringify($scope.cart));
             getcarttotal();
             //$scope.carttotal = getcarttotal();
         }
@@ -105,16 +106,16 @@ app.controller("cartctrl",['$scope',function($scope)
 }]);
 
 
-//controller for checkout page
+//controller for product detail page
 app.controller("detailctrl",['$scope',function($scope)
 {
     $scope.book =  JSON.parse(localStorage.getItem('book_detail'));
+    $scope.book.count = 1; 
     console.log("jfh",$scope.book);
 
-    $scope.cart = localStorage.getItem('cart') || [];
-    $scope.addtocart = function(book,count)
+    $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
+    $scope.addtocart = function(book)
     {
-        book.count = count;
         $scope.cart.push(book);
         console.log($scope.cart);
         localStorage.setItem('cart',JSON.stringify($scope.cart));
