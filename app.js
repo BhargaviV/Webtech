@@ -2,6 +2,8 @@
 const express = require('express');
 const server = express();
 const path = require('path');
+const spawn = require("child_process").spawn;
+
 
 server.set('PORT', 4001);
 server.use(express.static('src'));
@@ -40,14 +42,14 @@ server.get('/books',  (req, res, next) => {
 });
 
 
-/*server.get('/books/:category',  (req, res, next) => {
+server.get('/category/:category',  (req, res, next) => {
     book.getBookByCategory(req.params.category, function(err, books) {
         if (err) {
             res.send(err);
         }
         res.send(books);
     });
-});*/
+});
 
 
 server.get('/product-detail', (req, res, next) => {
@@ -58,6 +60,16 @@ server.get('/product-detail', (req, res, next) => {
       });
 });
 
+server.get('/test',(req,res,next) =>
+{
+    book_id = 20;
+    number = 4;
+    const pythonProcess = spawn('python',["E:/Engineering/7th_sem/WT2/Project/Webtech/recommendation/get_similar_books.py", book_id, number]);
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(data.toString());
+        res.send(data.toString());
+    });
+});
 
 
 server.listen(server.get('PORT'), () => {
