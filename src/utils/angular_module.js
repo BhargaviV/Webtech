@@ -8,6 +8,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         $scope.books = [];
         $scope._pages=[];
         $scope.cart = [];
+        $scope.category = '';
         $scope.getpagenumber = Array;
       
         $http.get("/getCategories").then(function(response)
@@ -24,7 +25,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             $http.get("/getTotalPages",{params: {category: category} }).then(function(response)
             {
                 $scope.page_number = response['data']['page_number'];
-                $scope._pages.length = $scope.page_number[0]['totalCount'] ;
+                $scope._pages.length = parseInt($scope.page_number[0]['totalCount']);
             },
             function(err)
             {
@@ -56,6 +57,8 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             console.log($scope.cart);
         }
         $scope.getBookByCategory = function(category,id=1) {
+            $scope.category = category;
+            $scope.getPageNumber(category);
             $scope.getBooksByPage(id,category);
         }
         $scope.send = function()
