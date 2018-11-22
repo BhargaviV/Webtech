@@ -236,7 +236,7 @@
 
 					<!-- Pagination -->
 					<div class="pagination flex-m flex-w p-t-26">
-							<button class="item-pagination flex-c-m trans-0-4" ng-repeat="n in _pages track by $index" ng-click="getBooksByPage($index+1)">
+							<button class="item-pagination flex-c-m trans-0-4" ng-repeat="n in _pages track by $index" ng-click="getBooksByPage($index+1,category)">
 								{{ $index+1 }}</button>
 					</div>
 				</div>

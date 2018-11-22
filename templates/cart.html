@@ -34,17 +34,31 @@
 <body class="animsition" ng-app="bookapp" ng-controller="cartctrl">
 
 	<!-- Header -->
-	<header class="header1">
-		<% include header.html %>
+	<header class="header1" >	
+			<!-- Header desktop -->
+			<div class="container-menu-header">
+					<div class="topbar">
+						<span class="topbar-child1">
+							Happy learning
+						</span>
+					</div>
+		
+					<div class="wrap_header">
+						<!-- Logo -->
+						<a href="index.html" class="logo">
+							<img src="images/icons/logo.png" alt="IMG-LOGO">
+						</a>
+					</div>
+			</div>				
 	</header>
-
+	
 	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/heading-pages-01.jpg);">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('images/books.jpg');">
 		<h2 class="l-text2 t-center">
-			Cart
+				Cart
 		</h2>
 	</section>
-
+		
 	<!-- Cart -->
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">

@@ -8,6 +8,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         $scope.books = [];
         $scope._pages=[];
         $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        $scope.category = '';
         $scope.getpagenumber = Array;
         
         getcarttotal() ;
@@ -16,16 +17,27 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         $http.get("/getCategories").then(function(response)
         {
            $scope.categories = response['data']['categories'];
-           $scope.page_number = response['data']['page_number'];
-           $scope._pages.length = $scope.page_number[0]['totalCount'] ;
+           $scope.getPageNumber();
         },
         function(err)
         {
             console.log(err);
         });
 
+        $scope.getPageNumber = function(category) {
+            $http.get("/getTotalPages",{params: {category: category} }).then(function(response)
+            {
+                $scope.page_number = response['data']['page_number'];
+                $scope._pages.length = parseInt($scope.page_number[0]['totalCount']);
+            },
+            function(err)
+            {
+                console.log(err);
+            });
+        }
+
         $scope.getBooksByPage = function(id,category) {
-            $http.get("/books/"+id).then(function(response)
+            $http.get("/books", {params: {pageId:id, category: category}}).then(function(response)
             {
                 $scope.books = response['data'];
                 console.log($scope.books);
@@ -35,8 +47,7 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
                 console.log(err);
             });
         }
-        $scope.getBooksByPage(1,'All');
-
+        $scope.getBooksByPage(1);
 
         $http.get("/");
 
@@ -49,16 +60,10 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             getcarttotal();
             //$scope.carttotal = getcarttotal();
         }
-        $scope.getBookByCategory = function(category) {
-            $http.get("/category/"+category).then(function(response)
-            {
-                $scope.books = response['data'];
-                console.log($scope.books);
-            },
-            function(err)
-            {
-                console.log(err);
-            });
+        $scope.getBookByCategory = function(category,id=1) {
+            $scope.category = category;
+            $scope.getPageNumber(category);
+            $scope.getBooksByPage(id,category);
         }
 
         $scope.send_to_cart = function()
