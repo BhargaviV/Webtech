@@ -17,17 +17,21 @@ server.get('/getCategories', (req, res, next) => {
         if (err) {
             res.send(err);
         }
-        book.getCountOfAllPages(function(err, count) {
-            if (err) {
-                res.send(err); 
-            }
-            res.send({'categories':categories,'page_number':count});
-        })
+        res.send({'categories':categories});
     })
 });
 
-server.get('/books/:id',  (req, res, next) => {
-    book.getBookByPage(req.params.id, function(err, books) {
+server.get('/getTotalPages', (req, res, next) => {
+    book.getCountOfAllPages(req.query.category, function(err, count) {
+      if(err) {
+          res.send(err);
+      }
+      res.send({'page_number':count});  
+    })
+});
+
+server.get('/books',  (req, res, next) => {
+    book.getBookByPage(req.query.pageId,req.query.category , function(err, books) {
         if (err) {
             res.send(err);
         }

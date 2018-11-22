@@ -33,16 +33,27 @@ app.controller("ctrl",['$scope','$http','$location','factory',function($scope,$h
         $http.get("/getCategories").then(function(response)
         {
            $scope.categories = response['data']['categories'];
-           $scope.page_number = response['data']['page_number'];
-           $scope._pages.length = $scope.page_number[0]['totalCount'] ;
+           $scope.getPageNumber();
         },
         function(err)
         {
             console.log(err);
         });
 
-        $scope.getBooksByPage = function(id) {
-            $http.get("/books/"+id).then(function(response)
+        $scope.getPageNumber = function(category) {
+            $http.get("/getTotalPages",{params: {category: category} }).then(function(response)
+            {
+                $scope.page_number = response['data']['page_number'];
+                $scope._pages.length = $scope.page_number[0]['totalCount'] ;
+            },
+            function(err)
+            {
+                console.log(err);
+            });
+        }
+
+        $scope.getBooksByPage = function(id,category) {
+            $http.get("/books", {params: {pageId:id, category: category}}).then(function(response)
             {
                 $scope.books = response['data'];
                 console.log($scope.books);
@@ -54,10 +65,7 @@ app.controller("ctrl",['$scope','$http','$location','factory',function($scope,$h
         }
         $scope.getBooksByPage(1);
 
-
         $http.get("/");
-
-       
 
         $scope.addtocart =function(book)
         {
@@ -80,17 +88,9 @@ app.controller("ctrl",['$scope','$http','$location','factory',function($scope,$h
             $scope.cart[len-1].count = 1;
             console.log($scope.cart);
         }*/
-        /*$scope.getBookByCategory = function(category) {
-            $http.get("/books/"+category).then(function(response)
-            {
-                $scope.books = response['data'];
-                console.log($scope.books);
-            },
-            function(err)
-            {
-                console.log(err);
-            });
-        }*/
+        $scope.getBookByCategory = function(category,id=1) {
+            $scope.getBooksByPage(id,category);
+        }
     
 }]);
 
