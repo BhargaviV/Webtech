@@ -30,8 +30,8 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             {
                 $scope.page_number = response['data']['page_number'];
                 $scope._pages.length = Math.ceil($scope.page_number[0]['totalCount']);
-                $scope.total_books = $scope.page_number[0]['totalCount'] * 10;
-                $scope.end_book = (($scope.current_page_number * 10) < $scope.total_books) ? ($scope.current_page_number * 10) : $scope.total_books;
+                $scope.total_books = Math.ceil($scope.page_number[0]['totalCount'] * 12);
+                $scope.end_book = (($scope.current_page_number * 12) < $scope.total_books) ? ($scope.current_page_number * 12) : $scope.total_books;
             },
             function(err)
             {
@@ -44,8 +44,8 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             $http.get("/books", {params: {pageId:id, category: category}}).then(function(response)
             {
                 $scope.books = response['data'];
-                $scope.start_book = (($scope.current_page_number-1) * 10) + 1;
-                $scope.end_book = (($scope.current_page_number * 10) < $scope.total_books) ? ($scope.current_page_number * 10) : $scope.total_books;
+                $scope.start_book = (($scope.current_page_number-1) * 12) + 1;
+                $scope.end_book = (($scope.current_page_number * 12) < $scope.total_books) ? ($scope.current_page_number * 12) : $scope.total_books;
             },
             function(err)
             {
