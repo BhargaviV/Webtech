@@ -20,7 +20,7 @@ def get_similar_items(df):
     cosine_similarities = get_cos_similarity(df)
     results = {} 
     for idx, row in df.iterrows(): 
-        similar_indices = cosine_similarities[idx].argsort()[:-5:-1] 
+        similar_indices = cosine_similarities[idx].argsort()[:-7:-1] 
         similar_items = [(cosine_similarities[idx][i], df['book_id'][i]) for i in similar_indices]
         results[row['book_id']] = similar_items[1:]
     return results
