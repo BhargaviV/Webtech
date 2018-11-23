@@ -61,7 +61,9 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             book.count = 1;
             book.isincart = true;
             $scope.cart.push(book);
+
             localStorage.setItem('cart',JSON.stringify($scope.cart));
+            swal(book.book_name, "is added to cart !", "success");
             getcarttotal();
         }
         $scope.getBookByCategory = function(category,id=1) {
@@ -111,32 +113,50 @@ app.controller("cartctrl",['$scope',function($scope)
 //controller for product detail page
 app.controller("detailctrl",['$scope','$http',function($scope,$http)
 {
-    $scope.book =  JSON.parse(localStorage.getItem('book_detail'));
-    $scope.book.count = $scope.book.count || 1;
-    $scope.cart_count = JSON.parse(localStorage.getItem('cart_count')) || 0;
-    $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    
-    $scope.recommendation =[];
-    
-    $scope.addtocart = function(book)
-    {
-        book.isincart = true;
-        $scope.cart.push(book);
-        localStorage.setItem('cart',JSON.stringify($scope.cart));
-    }
-    
-    $http.get("/recommend/" + $scope.book.book_id).then(
-        function (response)
-        {
-            $scope.recommendation = response['data'];
-            console.log($scope.recommendation);
-        },
-        function (err)
-        {
-            console.log(err);
-        }
-        
-    );
+        $scope.book =  JSON.parse(localStorage.getItem('book_detail'));
+        $scope.book.count = $scope.book.count || 1;
+        $scope.cart_count = JSON.parse(localStorage.getItem('cart_count')) || 0;
+        $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+
+        $scope.recommendation =[];
+
+        $scope.addtocart = function(book)
+        {
+            book.isincart = true;
+            $scope.cart.push(book);
+            localStorage.setItem('cart',JSON.stringify($scope.cart));
+            swal(book.book_name, "is added to cart !", "success");
+        }
+
+        $http.get("/recommend/" + $scope.book.book_id).then(
+            function (response)
+            {
+                $scope.recommendation = response['data'];
+                console.log($scope.recommendation);
+            },
+            function (err)
+            {
+                console.log(err);
+            }
+            
+        );
+}]);
+
+app.controller("checkctrl",['$scope',function($scope)
+{
+    $scope.cart = JSON.parse(localStorage.getItem('cart'));
+    getcarttotal();
+    function getcarttotal()
+    {
+        var total = 0; 
+        angular.forEach($scope.cart, function(value,key)
+        {
+            total += value.count * value.book_price;
+            
+        });
+        $scope.carttotal = total;
+
+            
+    }
 }]);
