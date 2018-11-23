@@ -4,14 +4,12 @@ const server = express();
 const path = require('path');
 const spawn = require("child_process").spawn;
 
-
 server.set('PORT', 4001);
 server.use(express.static('src'));
 server.use(express.static('templates'));
 
 const category = require('./models/category');
 const book = require('./models/books');
-
 
 //https://stackoverflow.com/questions/35694504/pagination-in-nodejs-with-mysql
 server.get('/getCategories', (req, res, next) => {
@@ -41,30 +39,11 @@ server.get('/books',  (req, res, next) => {
     });
 });
 
-
-server.get('/category/:category',  (req, res, next) => {
-    book.getBookByCategory(req.params.category, function(err, books) {
-        if (err) {
-            res.send(err);
-        }
-        res.send(books);
-    });
-});
-
-
-server.get('/product-detail', (req, res, next) => {
-    book.getBookById(req.query.bookId, function(err, book) {
-        if (err)
-          res.send(err);
-        res.send(book);
-      });
-});
-
 server.get('/recommend/:id',(req,res,next) =>
 {
     book_id = req.params.id;
     number = 4;
-    const pythonProcess = spawn('python',["E:/Engineering/7th_sem/WT2/Project/Webtech/recommendation/get_similar_books.py", book_id, number]);
+    const pythonProcess = spawn('python',["./recommendation/get_similar_books.py", book_id, number]);
     pythonProcess.stdout.on('data', (data) => {
         console.log(data.toString());
         res.send(data.toString());
@@ -75,7 +54,6 @@ server.get('/recommend/:id',(req,res,next) =>
 server.listen(server.get('PORT'), () => {
     console.log("Server is running");
 });
-
 
 
 

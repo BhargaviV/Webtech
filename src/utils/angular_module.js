@@ -8,10 +8,10 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         $scope.books = [];
         $scope._pages=[];
         $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
-        $scope.category = '';
-        $scope.getpagenumber = Array;
+        $scope.category = undefined;
         $scope.cart_count = localStorage.getItem('count') || 0;
-        
+        $scope.current_page_number = 1;
+        $scope.total_books = undefined;
         getcarttotal() ;
       
         console.log("In main",$scope.cart);
@@ -29,7 +29,9 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             $http.get("/getTotalPages",{params: {category: category} }).then(function(response)
             {
                 $scope.page_number = response['data']['page_number'];
-                $scope._pages.length = parseInt($scope.page_number[0]['totalCount']);
+                $scope._pages.length = Math.ceil($scope.page_number[0]['totalCount']);
+                $scope.total_books = $scope.page_number[0]['totalCount'] * 10;
+                $scope.end_book = (($scope.current_page_number * 10) < $scope.total_books) ? ($scope.current_page_number * 10) : $scope.total_books;
             },
             function(err)
             {
@@ -38,9 +40,12 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
         }
 
         $scope.getBooksByPage = function(id,category) {
+            $scope.current_page_number = id;
             $http.get("/books", {params: {pageId:id, category: category}}).then(function(response)
             {
                 $scope.books = response['data'];
+                $scope.start_book = (($scope.current_page_number-1) * 10) + 1;
+                $scope.end_book = (($scope.current_page_number * 10) < $scope.total_books) ? ($scope.current_page_number * 10) : $scope.total_books;
             },
             function(err)
             {
