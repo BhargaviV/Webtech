@@ -175,7 +175,9 @@ app.controller("checkctrl",['$scope',function($scope)
             
         });
         $scope.carttotal = total;
-
-            
+    }
+    $scope.clearCart = function() {
+        localStorage.removeItem('cart');
+        location.href = '/';
     }
 }]);
