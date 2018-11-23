@@ -3,8 +3,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import sys
 import json
+import os.path
 
-df = pd.read_excel("../db/books_data.xlsx")
+df = pd.read_excel(os.path.abspath('./db/books_data.xlsx'))
 
 def item(id):
     item = df.loc[df['book_id'] == id]
@@ -33,6 +34,8 @@ def recommend(id, num):
     for rec in recs:
         book = item(rec[1])
         del book['book_description']
+        del book['author_name']
+        del book['author_id']
         recommendations.append(book)
     print(json.dumps(recommendations))
     sys.stdout.flush()
