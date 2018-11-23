@@ -31,7 +31,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
-<body class="animsition">
+<body class="animsition" ng-app="bookapp" ng-controller="checkctrl">
 
     <!-- Header -->
 	<header class="header1" >	
@@ -59,102 +59,47 @@
 		</h2>
 	</section>
 	<!-- Cart -->
-	<section class="cart bgwhite p-t-70 p-b-100">
-		<div class="container">
-            			<!-- Total -->
-			<div class="bo9 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
-                    <h5 class="m-text20 p-b-24">
-                        Billing details
-                    </h5>
-    
-                    <!-- Name -->
-                    <div class="flex-w flex-sb-m p-b-12">
-                        <label>
-                            First Name:
-                            <span>*</span>
-                        </label>
-                        <span class="m-text21 w-size20 bo4 size13">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="firstName">
-                        </span>
-                        
-                        <label>
-                            Last Name:
-                            <span>*</span> 
-                        </label>
-                        <span class="m-text21 w-size20 bo4 size13">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="lastName">
-                        </span>
-                    </div>
-    
-                    <!-- Country -->
-                    <div class="flex-w flex-sb bo10 p-t-15 p-b-20">
-                        <label>
-                                Country:
-                                <span>*</span>
-                        </label>
-                            <div class="w-size20 w-full-sm">
-                                <div class="size13 bo4 m-b-12">
-                                    <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="state" placeholder="State /  country">
-                                </div> 
+	<section class="bgwhite p-t-66 p-b-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 p-b-30">
+                        <form class="leave-comment">
+                            <h4 class="m-text26 p-b-36 p-t-15">
+                                Send order to
+                            </h4>
+
+                            <div class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Full Name">
                             </div>
-                    </div>
-
-
-                    <!-- Address -->
-                    <div class="flex-w flex-sb bo10 p-t-15 p-b-20">
-                            <label>
-                                    Address:
-                                    <span>*</span>
-                            </label>
-                                <div class="w-size20 w-full-sm">
-                                    <div class=" bo4 m-b-12">
-                                        <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="address" placeholder="Street Address">
-                                    </div> 
-                                </div>
-                    </div>
-
-
-                            <!-- Postal Code-->
-                    <div class="flex-w flex-sb bo10 p-t-15 p-b-20">
-                        <label>
-                                Postal Code:
-                                <span>*</span>
-                        </label>
-                            <div class="w-size20 w-full-sm">
-                                <div class="size13 bo4 m-b-12">
-                                        <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="postcode" placeholder="Postcode / Zip">
-                                </div> 
+    
+                            <div class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="phone-number" placeholder="Phone Number">
                             </div>
-                    </div>
     
-                    <!-- Phone Number -->
-                    <div class="flex-w flex-sb-m p-b-12">
-                        <label>
-                            Phone Number:
-                            <span>*</span>
-                        </label>
-                        <span class="m-text21 w-size20 bo4 size13">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="phone">
-                        </span>
-                        
-                        <label>
-                            Email Address:
-                            <span>*</span> 
-                        </label>
-                        <span class="m-text21 w-size20 bo4 size13">
-                            <input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="email">
-                        </span>
-                    </div>
-    
-                    <div class="size15 trans-0-4">
-                        <!-- Button -->
-                        <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-                            Proceed to Checkout
-                        </button>
-                    </div>
-            </div>    
-		</div>
-	</section>
+                            <div class="bo4 of-hidden size15 m-b-20">
+                                <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="email" placeholder="Email Address">
+                            </div>
+	
+							<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="Message"></textarea>
+	
+							<div class="bo4 of-hidden size15 m-b-20">
+									<input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="total" value="Total price: {{ carttotal }}" ng-disabled="true">
+							</div>
+
+                            <div class="w-size25">
+                                <!-- Button -->
+                                <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                                    Confirm
+                                </button>
+                            </div>
+                        </form>
+					</div>
+					<div class="col-md-6 p-b-30">
+						<img src="../images/explore.jpg" style="width:555px;height:547px;"alt="Thank you">
+					</div>
+                </div>
+            </div>
+        </section>
 
 	<!-- Back to top -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
@@ -189,6 +134,8 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+	<script	src="utils/angular_module.js"></script>
 
 </body>
 </html>
