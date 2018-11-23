@@ -56,7 +56,9 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
             book.count = 1;
             book.isincart = true;
             $scope.cart.push(book);
+
             localStorage.setItem('cart',JSON.stringify($scope.cart));
+            swal(book.book_name, "is added to cart !", "success");
             getcarttotal();
         }
         $scope.getBookByCategory = function(category,id=1) {
@@ -119,6 +121,7 @@ app.controller("detailctrl",['$scope','$http',function($scope,$http)
             book.isincart = true;
             $scope.cart.push(book);
             localStorage.setItem('cart',JSON.stringify($scope.cart));
+            swal(book.book_name, "is added to cart !", "success");
         }
 
         $http.get("/recommend/" + $scope.book.book_id).then(
