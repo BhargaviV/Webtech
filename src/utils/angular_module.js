@@ -58,13 +58,28 @@ app.controller("ctrl",['$scope','$http',function($scope,$http)
 
         $scope.addtocart = function(book)
         {
-            book.count = 1;
-            book.isincart = true;
-            $scope.cart.push(book);
+            var ispresent =0 ;
+            angular.forEach($scope.cart,function(value,key)
+            {
+                if(book.book_id == value.book_id)
+                {
+                    ispresent=1;
+                }
+            });
+            if(ispresent == 0)
+            {
+                book.count = 1;
+                book.isincart = true;
+                $scope.cart.push(book);
 
-            localStorage.setItem('cart',JSON.stringify($scope.cart));
-            swal(book.book_name, "is added to cart !", "success");
-            getcarttotal();
+                localStorage.setItem('cart',JSON.stringify($scope.cart));
+                swal(book.book_name, "is added to cart !", "success");
+                getcarttotal();
+            }
+            else
+            {
+                swal("Already in cart");
+            }
         }
         $scope.getBookByCategory = function(category,id=1) {
             $scope.category = category;
@@ -122,10 +137,29 @@ app.controller("detailctrl",['$scope','$http',function($scope,$http)
 
         $scope.addtocart = function(book)
         {
-            book.isincart = true;
-            $scope.cart.push(book);
-            localStorage.setItem('cart',JSON.stringify($scope.cart));
-            swal(book.book_name, "is added to cart !", "success");
+
+            var ispresent =0 ;
+            angular.forEach($scope.cart,function(value,key)
+            {
+                if(book.book_id == value.book_id)
+                {
+                    ispresent=1;
+                }
+            });
+            if(ispresent == 0)
+            {
+                book.count =1;
+                book.isincart = true;
+                $scope.cart.push(book);
+                localStorage.setItem('cart',JSON.stringify($scope.cart));
+                swal(book.book_name, "is added to cart !", "success");
+                getcarttotal();
+            }
+            else
+            {
+                swal("Already in cart");
+            }
+            
         }
 
         $http.get("/recommend/" + $scope.book.book_id).then(
@@ -178,6 +212,8 @@ app.controller("checkctrl",['$scope',function($scope)
     }
     $scope.clearCart = function() {
         localStorage.removeItem('cart');
+        localStorage.removeItem('cart_count');
+        localStorage.removeItem('book_detail');
         location.href = '/';
     }
 }]);

@@ -1,7 +1,6 @@
 
 const express = require('express');
 const server = express();
-const path = require('path');
 const spawn = require("child_process").spawn;
 
 server.set('PORT', 4001);
@@ -11,7 +10,7 @@ server.use(express.static('templates'));
 const category = require('./models/category');
 const book = require('./models/books');
 
-//https://stackoverflow.com/questions/35694504/pagination-in-nodejs-with-mysql
+
 server.get('/getCategories', (req, res, next) => {
     category.getAllCategories(function(err, categories) {
         if (err) {

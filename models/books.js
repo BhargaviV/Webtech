@@ -4,7 +4,7 @@ var Book = function(){
 };
 
 // Display 10 items per page
-Book.perPage = 10;
+Book.perPage = 12;
 
 Book.getAllBooks = function getAllBooks(result) {
     sql.query("SELECT book_id,book_name,book_image_url,book_price FROM book;", function (err, res) {

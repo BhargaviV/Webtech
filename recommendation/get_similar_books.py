@@ -5,7 +5,7 @@ import sys
 import json
 import os.path
 
-df = pd.read_excel(os.path.abspath('./db/books_data.xlsx'))
+df = pd.read_excel(os.path.abspath('E:/Engineering/7th_sem/WT2/Project/Webtech/db/books_data.xlsx'))
 
 def item(id):
     item = df.loc[df['book_id'] == id]
