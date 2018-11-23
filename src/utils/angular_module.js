@@ -111,8 +111,7 @@ app.controller("detailctrl",['$scope','$http',function($scope,$http)
         $scope.book =  JSON.parse(localStorage.getItem('book_detail'));
         $scope.book.count = $scope.book.count || 1;
         $scope.cart_count = JSON.parse(localStorage.getItem('cart_count')) || 0;
-        $scope.cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+        $scope.cart = JSON.parse(localStorage.getItem('cart')) || []; 
 
         $scope.recommendation =[];
 
@@ -136,6 +135,26 @@ app.controller("detailctrl",['$scope','$http',function($scope,$http)
             }
             
         );
+        getcarttotal();
+        function getcarttotal()
+        {
+            var total = 0; 
+            var count =0;
+            angular.forEach($scope.cart, function(value,key)
+            {
+                total += value.count * value.book_price;
+                count+=1;
+                
+            });
+            $scope.carttotal = total;
+            $scope.cart_count = count;
+        }
+        $scope.send_to_cart = function()
+        {
+            localStorage.setItem('cart',JSON.stringify($scope.cart));
+            location.href = "/cart.html";
+        }
+
 }]);
 
 app.controller("checkctrl",['$scope',function($scope)
