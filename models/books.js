@@ -18,18 +18,6 @@ Book.getAllBooks = function getAllBooks(result) {
         });   
 };
 
-Book.getBookById = function getBookById(bookId, result) {
-    sql.query("Select book_name,book_description,book_image_url,book_price,author_name,category_name from book,author,category where author.author_id = book.author_id and category.category_id=book.category_id and book_id = ? ", bookId, function (err, res) {             
-        if(err) {
-            console.log("error: ", err);
-            result(err, null);
-        }
-        else{
-            result(null, res);
-        }
-    });  
-}
-
 Book.getBookByPage = function getBookByPage(pageId, category, books) {
     currentPage = pageId > 0 ? pageId : 1;
     var fetchCountQuery = undefined;
@@ -50,10 +38,10 @@ Book.getBookByPage = function getBookByPage(pageId, category, books) {
             const start = perPage*(pageId - 1);
             var fetchBookQuery = undefined;
             if(category != null) {
-                fetchBookQuery = "SELECT book_id,book_name,book_image_url,book_price FROM book natural join category where category_name = '"+category+"' LIMIT "+perPage+" OFFSET "+start+";";
+                fetchBookQuery = "SELECT book_id,book_name,book_image_url,book_price,author_name,category_name FROM book natural join category natural join author where category_name = '"+category+"' LIMIT "+perPage+" OFFSET "+start+";";
             }
             else {
-                fetchBookQuery = "SELECT book_id,book_name,book_image_url,book_price FROM book LIMIT "+perPage+" OFFSET "+start+";";
+                fetchBookQuery = "SELECT book_id,book_name,book_image_url,book_price,author_name,category_name FROM book natural join author natural join category LIMIT "+perPage+" OFFSET "+start+";";
             }
             sql.query(fetchBookQuery,(err,res)=>{
                 if(err) {
@@ -87,20 +75,4 @@ Book.getCountOfAllPages = function getCountOfAllPages(category, result) {
     });   
 }
 
-
-
-Book.getBookByCategory = function getBookByCategory(category, result) {
-    
-    console.log(category);
-    sql.query(`SELECT book_id,book_name,book_image_url,book_price FROM book natural join category where category_name='${category}';`, function (err, res) {
-        if(err) {
-            console.log("error: ", err);
-            result(null, err);
-        }
-        else {
-            result(null, res);
-        }
-    }); 
-    
-}
 module.exports = Book;

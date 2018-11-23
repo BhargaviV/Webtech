@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import sys
 import json
 
-df = pd.read_excel("E:/Engineering/7th_sem/WT2/Project/Webtech/db/books_data.xlsx")
+df = pd.read_excel("../db/books_data.xlsx")
 
 def item(id):
     item = df.loc[df['book_id'] == id]

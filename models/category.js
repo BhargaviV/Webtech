@@ -10,7 +10,6 @@ Category.getAllCategories = function (result) {
                 result(null, err);
             }
             else {
-                // console.log('Categories : ', res);  
                 result(null, res);
             }
         });   

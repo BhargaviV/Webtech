@@ -140,9 +140,9 @@
 
 						<ul class="p-b-54">
 							<li class="p-t-4">
-								<a href="#" class="s-text13 active1">
+								<button ng-click="getBookByCategory()" class="s-text13">
 									All
-								</a>
+								</button>
 							</li>
 							
 							<li class="p-t-4" ng-repeat="item in categories">
@@ -183,10 +183,9 @@
 						</div>
 
 						<span class="s-text8 p-t-5 p-b-5">
-							Showing 1–10 of 16 results
+							Showing {{ start_book }} – {{ end_book }} of {{ total_books }} results
 						</span>
 					</div>
-
 
 					<!-- Product -->
 					<div class="row" >
